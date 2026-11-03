@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Velvet Plum</title>
+<meta name="description" content="Velvet Plum: one oversized cat-eye in plum acetate with a gold hinge. A fictional brand and design demo.">
+<meta property="og:title" content="Velvet Plum">
+<meta property="og:description" content="One frame. Cut in plum. A fictional brand and design demo.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1b0618">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=Pinyon+Script&display=swap">
+<style>
+/* Layout: one product, one dark plum world. Full-bleed hero with copy over the
+   empty left of the photo; then frame, details, craft, city, reserve.
+   Left-aligned text throughout; centered only for the manifesto line. */
+:root {
+  --bg: #1b0618;            /* velvet black-plum */
+  --bg-raised: #2a0a27;     /* panels */
+  --plum: #64165D;          /* brand plum */
+  --magenta: #8A176E;       /* brand magenta-plum */
+  --mint: #A7E8D7;          /* rare highlight */
+  --mint-soft: #C6F0E4;
+  --pearl: #F1EAF6;         /* lavender pearl: primary text */
+  --pearl-dim: #CDBED6;     /* secondary text */
+  --gold: #C8A862;          /* hairlines only */
+  --line: rgba(200, 168, 98, .38);
+
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: clamp(16px, 4.5vw, 64px);
+  --max: 1240px;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--pearl);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+
+.wrap {
+  width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(72px, 11vw, 150px); }
+
+/* type scale */
+.display { font-family: var(--font-serif); font-weight: 300; line-height: 1.02; letter-spacing: -.01em; text-wrap: balance; }
+.h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.2rem, 4.6vw, 3.75rem); line-height: 1.06; text-wrap: balance; }
+.h3 { font-family: var(--font-serif); font-weight: 500; font-size: 1.6rem; line-height: 1.15; }
+.lede { font-size: 1.0625rem; color: var(--pearl-dim); max-width: 34rem; }
+.body { color: var(--pearl-dim); max-width: 34rem; }
+
+/* wordmark */
+.mark { display: inline-flex; align-items: baseline; gap: .35em; text-decoration: none; white-space: nowrap; }
+.mark .s { font-family: var(--font-script); font-size: 1.9em; line-height: 1; color: var(--pearl); }
+.mark .p { font-family: var(--font-serif); font-weight: 600; letter-spacing: .22em; font-size: 1.05em; color: var(--pearl); }
+
+/* header */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(27, 6, 24, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(200,168,98,.18); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+.site-head .mark { font-size: 1.05rem; }
+.nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); font-size: .9375rem; }
+.nav a.link { text-decoration: none; color: var(--pearl-dim); }
+.nav a.link:hover { color: var(--pearl); }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: 999px; font-family: var(--font-sans); font-weight: 500; font-size: .9375rem; letter-spacing: .02em; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: background-color .25s, color .25s, border-color .25s; }
+.btn-fill { background: var(--mint); color: var(--bg); }
+.btn-fill:hover { background: var(--mint-soft); }
+.btn-line { border-color: var(--line); color: var(--pearl); background: transparent; }
+.btn-line:hover { border-color: var(--gold); }
+.site-head .btn { min-height: 40px; padding: 0 20px; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; }
+.hero-media { position: relative; }
+.hero-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; animation: settle 2.6s cubic-bezier(.2,.7,.2,1) both; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; pointer-events: none; }
+.hero-video.on { opacity: 1; }
+.hero-media::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(27,6,24,.55) 22%, rgba(27,6,24,0) 48%), linear-gradient(0deg, var(--bg) 0%, rgba(27,6,24,0) 14%); }
+.hero-copy { position: absolute; inset: 0; display: flex; align-items: center; }
+.hero-text { width: min(33rem, 42%); display: flex; flex-direction: column; gap: 28px; }
+.hero h1 { font-size: clamp(3rem, 6vw, 5.6rem); animation: rise 1.4s .5s cubic-bezier(.2,.7,.2,1) both; }
+.hero .lede { max-width: 24rem; animation: rise 1.4s .75s cubic-bezier(.2,.7,.2,1) both; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; animation: rise 1.4s 1s cubic-bezier(.2,.7,.2,1) both; }
+.price { font-family: var(--font-serif); font-size: 1.5rem; }
+.price small { font-family: var(--font-sans); font-size: .75rem; color: var(--pearl-dim); margin-left: 6px; }
+@keyframes settle { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* manifesto */
+.manifesto { background: var(--plum); text-align: center; padding-block: clamp(56px, 9vw, 120px); }
+.manifesto p { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: clamp(1.9rem, 5vw, 4rem); line-height: 1.12; text-wrap: balance; }
+
+/* frame */
+.frame-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.frame-grid figure img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.frame-text { display: flex; flex-direction: column; gap: 28px; }
+.specs { display: grid; gap: 0; border-top: 1px solid var(--line); margin-top: 8px; }
+.specs > div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.specs dt { color: var(--pearl-dim); font-size: .9375rem; }
+.specs dd { font-size: .9375rem; }
+
+/* details gallery */
+.details { background: var(--bg-raised); }
+.details-head { display: flex; flex-direction: column; gap: 20px; margin-bottom: clamp(32px, 5vw, 64px); }
+.details-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(16px, 3vw, 40px); }
+.details-grid figure:nth-child(2) { margin-top: clamp(32px, 8vw, 120px); }
+.details-grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.details-grid figcaption { margin-top: 14px; color: var(--pearl-dim); font-size: .9375rem; max-width: 26rem; }
+
+/* craft */
+.craft-head { margin-bottom: clamp(36px, 5vw, 64px); }
+.craft-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); }
+.craft-cols > div { border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+
+/* city */
+.city { background: var(--bg-raised); }
+.city-head { margin-bottom: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 20px; }
+.city-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
+.shot { position: relative; overflow: hidden; margin: 0; }
+.shot img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.shot::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(27,6,24,.6), rgba(27,6,24,0) 30%); }
+.shot figcaption { position: absolute; z-index: 2; left: 16px; bottom: 14px; font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--pearl); }
+.shot.m img { object-position: 50% 12%; }
+.shot.r img { object-position: 60% 28%; }
+.shot.s img { object-position: 50% 12%; }
+
+/* reserve */
+.reserve-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.reserve-text { display: flex; flex-direction: column; gap: 24px; }
+.panel { background: var(--plum); padding: clamp(24px, 4vw, 48px); border: 1px solid var(--line); }
+.panel form { display: flex; flex-direction: column; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-size: .9375rem; color: var(--pearl); }
+.field input, .field select { height: 50px; padding: 0 14px; border-radius: 2px; border: 1px solid rgba(241,234,246,.4); background: rgba(27,6,24,.45); color: var(--pearl); font: inherit; font-weight: 300; }
+.field input::placeholder { color: rgba(241,234,246,.55); }
+.field input:hover, .field select:hover { border-color: var(--mint); }
+.fine { font-size: .8125rem; color: var(--pearl-dim); }
+.panel .fine { color: #E5D9EC; }
+.status { min-height: 1.5em; font-size: .9375rem; color: var(--mint-soft); }
+
+/* footer */
+.foot { border-top: 1px solid rgba(200,168,98,.18); padding-block: 48px; }
+.foot .wrap { display: flex; flex-direction: column; gap: 16px; }
+.foot .mark { font-size: 1.1rem; }
+.foot p { color: var(--pearl-dim); font-size: .8125rem; max-width: 44rem; }
+
+/* mobile reserve bar */
+.sticky-cta { display: none; }
+
+@media (max-width: 900px) {
+  .hero-copy { position: static; }
+  .hero-copy.wrap { display: block; padding-top: 28px; }
+  .hero-text { width: 100%; }
+  .hero-media img { aspect-ratio: 4 / 3; object-position: 78% 50%; }
+  .hero-video { object-position: 78% 50%; }
+  .hero-media::after { background: linear-gradient(0deg, var(--bg) 0%, rgba(27,6,24,0) 30%); }
+  .frame-grid, .reserve-grid { grid-template-columns: minmax(0, 1fr); }
+  .craft-cols { grid-template-columns: minmax(0, 1fr); }
+  .city-grid { grid-template-columns: minmax(0, 1fr); }
+  .shot img { aspect-ratio: 1 / 1; }
+  .nav a.link { display: none; }
+}
+@media (max-width: 720px) {
+  .site-head .btn { display: none; }
+  .foot { padding-bottom: calc(48px + 76px); }
+  .details-grid { grid-template-columns: minmax(0, 1fr); }
+  .details-grid figure:nth-child(2) { margin-top: 0; }
+  .specs > div { grid-template-columns: 6.5rem minmax(0, 1fr); }
+  .sticky-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25;
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    background: rgba(27,6,24,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-media img, .hero h1, .hero .lede, .hero-actions { animation: none; }
+  .hero-video { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Velvet Plum home"><span class="s">Velvet</span><span class="p">PLUM</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a class="link" href="#frame">The frame</a>
+      <a class="link" href="#craft">Craft</a>
+      <a class="link" href="#city">In the city</a>
+      <a class="btn btn-fill" href="#reserve">Reserve</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media">
+      <img src="img/hero.webp" width="1344" height="752" alt="Oversized plum cat-eye sunglasses with a gold hinge resting on folded plum velvet beside a ripple of mint satin" fetchpriority="high">
+      <video class="hero-video" id="hero-video" muted loop playsinline preload="auto" poster="img/hero.webp" aria-hidden="true" tabindex="-1"><source src="img/hero-loop.mp4" type="video/mp4"></video>
+    </div>
+    <div class="hero-copy wrap">
+      <div class="hero-text">
+        <h1 id="hero-title" class="display">One frame.<br>Cut in plum.</h1>
+        <p class="lede">The Aubade is a single oversized cat-eye in hand-polished plum acetate, with a gold hinge and a lens that fades from deep plum to blush.</p>
+        <div class="hero-actions">
+          <a class="btn btn-fill" href="#reserve">Reserve yours</a>
+          <span class="price">$480<small>sample price</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto" aria-label="Brand statement">
+    <div class="wrap"><p>Modern. Feminine. Luxurious.</p></div>
+  </section>
+
+  <section class="band" id="frame" aria-labelledby="frame-title">
+    <div class="wrap frame-grid">
+      <figure><img src="img/front.webp" width="1024" height="1024" loading="lazy" alt="Front view of the Aubade sunglasses on a white marble plinth against a soft mint and lavender backdrop"></figure>
+      <div class="frame-text">
+        <h2 class="h2" id="frame-title">Built around one shape.</h2>
+        <p class="lede">We make a single frame and spend the whole year on it. A wide, lifted cat-eye that suits a rooftop at five o'clock and a hotel lobby at noon.</p>
+        <dl class="specs">
+          <div><dt>Frame</dt><dd>Solid plum acetate, hand-polished</dd></div>
+          <div><dt>Hinge</dt><dd>Gold-finish, five-barrel</dd></div>
+          <div><dt>Lens</dt><dd>Plum to blush gradient, UV400</dd></div>
+          <div><dt>Fit</dt><dd>One size, 142 mm wide</dd></div>
+          <div><dt>Includes</dt><dd>Velvet case, suede cloth</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band details" aria-labelledby="details-title">
+    <div class="wrap">
+      <div class="details-head">
+        <h2 class="h2" id="details-title">Look closer.</h2>
+        <p class="lede">The gold hinge is the only metal you will see. The case is lined in the same velvet as the backdrop.</p>
+      </div>
+      <div class="details-grid">
+        <figure><img src="img/hinge.webp" width="1200" height="1500" loading="lazy" alt="Close view of the gold hinge joining the plum frame to the temple"><figcaption>A single gold hinge, polished by hand and set flush with the acetate.</figcaption></figure>
+        <figure><img src="img/flatlay.webp" width="1200" height="1500" loading="lazy" alt="The sunglasses on mint satin beside an open plum velvet case and a cream suede cloth"><figcaption>Every pair arrives in a velvet case with a gold-rimmed edge and a suede cloth.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="craft" aria-labelledby="craft-title">
+    <div class="wrap">
+      <div class="craft-head"><h2 class="h2" id="craft-title">Made slowly.</h2></div>
+      <div class="craft-cols">
+        <div><h3 class="h3">Acetate</h3><p class="body">Cut from a plant-based acetate block, then tumbled and polished until the plum looks lit from within.</p></div>
+        <div><h3 class="h3">Gold</h3><p class="body">The hinge is the only metal. It is set by hand so the temples open with a soft, even resistance.</p></div>
+        <div><h3 class="h3">Lens</h3><p class="body">A graduated plum lens that cuts glare at the top and lets your eyes show through at the bottom.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band city" id="city" aria-labelledby="city-title">
+    <div class="wrap">
+      <div class="city-head">
+        <h2 class="h2" id="city-title">Worn in the city.</h2>
+        <p class="lede">Three scenes, one frame. Campaign images in this draft are AI-generated illustrations.</p>
+      </div>
+      <div class="city-grid">
+        <figure class="shot m"><img src="img/milan.webp" width="1200" height="1500" loading="lazy" alt="Woman in a plum velvet jacket-dress and plum cat-eye sunglasses carrying mint shopping bags through a glass-roofed arcade"><figcaption>The arcade</figcaption></figure>
+        <figure class="shot r"><img src="img/rooftop.webp" width="1200" height="1500" loading="lazy" alt="Windswept woman in plum cat-eye sunglasses and a plum velvet blazer on a rooftop against a plum and mint dusk sky"><figcaption>The rooftop</figcaption></figure>
+        <figure class="shot s"><img src="img/street.webp" width="1200" height="1500" loading="lazy" alt="Woman in a magenta-plum satin dress, plum cat-eye sunglasses and a mint clutch standing on an old-town street"><figcaption>The old town</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="reserve" aria-labelledby="reserve-title">
+    <div class="wrap reserve-grid">
+      <div class="reserve-text">
+        <h2 class="h2" id="reserve-title">Reserve yours.</h2>
+        <p class="lede">The first run is small. Leave your name and email and we will hold a pair for you.</p>
+        <p class="price">$480<small>sample price, demo only</small></p>
+      </div>
+      <div class="panel">
+        <form id="reserve-form" novalidate>
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Your full name"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="country">Delivery country</label>
+            <select id="country" name="country"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>France</option><option>Italy</option><option>Other</option></select></div>
+          <button class="btn btn-fill" type="submit">Reserve yours</button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+          <p class="fine">This is a demo. No payment is taken and nothing is sent.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Velvet Plum home"><span class="s">Velvet</span><span class="p">PLUM</span></a>
+    <p>Velvet Plum is a fictional brand and this is a design demo. The product name, price, specifications and all copy are placeholders. Product and scene images are AI-generated illustrations.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span class="price">$480<small>sample</small></span>
+  <a class="btn btn-fill" href="#reserve">Reserve yours</a>
+</div>
+
+<script>
+(function () {
+  /* Hero loop: starts after the opening animation settles, pauses off-screen, skipped for reduced motion. */
+  var vid = document.getElementById('hero-video');
+  if (vid) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { vid.remove(); }
+    else {
+      var visible = true;
+      var started = Date.now();
+      var reveal = function () {
+        var wait = Math.max(0, 2500 - (Date.now() - started));
+        setTimeout(function () { vid.classList.add('on'); }, wait);
+      };
+      var p = vid.play();
+      if (p && p.then) { p.then(reveal).catch(function () { vid.remove(); }); } else { reveal(); }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible) { vid.play().catch(function () {}); } else { vid.pause(); }
+        }, { threshold: 0.1 }).observe(vid);
+      }
+    }
+  }
+
+  var form = document.getElementById('reserve-form');
+  var status = document.getElementById('status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name');
+    var email = document.getElementById('email');
+    if (!name.value.trim()) { status.textContent = 'Enter your name to reserve.'; name.focus(); return; }
+    if (!email.validity.valid || !email.value.trim()) { status.textContent = 'Enter a valid email, like you@example.com.'; email.focus(); return; }
+    status.textContent = 'Reserved, ' + name.value.trim().split(' ')[0] + '. This is a demo, so nothing was sent.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
